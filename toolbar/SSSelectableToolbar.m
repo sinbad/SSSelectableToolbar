@@ -12,6 +12,7 @@
 
 @implementation SSSelectableToolbar
 @synthesize window;
+@synthesize defaultItemIndex;
 
 - (id) initWithIdentifier:(NSString *)identifier
 {
@@ -22,31 +23,47 @@
 	return self;
 }
 
+- (void) dealloc
+{
+	[blankView release];
+	[window release];
+	[super dealloc];
+
+}
 -(IBAction)toolbarItemClicked:sender
 {
 	// this is really only here so I can set up a target / action which makes button clickable
+}
+
+-(void)selectDefaultItem:sender
+{
+	// select the default item first time becomes key
+	[self selectItemWithIndex:defaultItemIndex];
+	// Don't tell us again
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidBecomeKeyNotification object:window];
+
 }
 
 -(void) awakeFromNib
 {
 	// Set target / action on all buttons to make them clickable
 	NSArray* items = [self visibleItems];
-	NSToolbarItem* first = nil;
 	for (NSToolbarItem* item in items)
 	{
 		if ([item isKindOfClass:[SSSelectableToolbarItem class]])
 		{
 			[item setTarget:self];
 			[item setAction:@selector(toolbarItemClicked:)];			
-			
-			if (!first)
-				first = item;
 		}
 	}
 	
-	// select the first item
-	[self setSelectedItemIdentifier:[first itemIdentifier]];
+	// Wait until window displayed before sizing (important for displaying in sheets)
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(selectDefaultItem:)
+												 name:NSWindowDidBecomeKeyNotification 
+											   object:window];
 	
+
 }
 
 -(NSToolbarItem*)itemWithIdentifier:(NSString*)identifier

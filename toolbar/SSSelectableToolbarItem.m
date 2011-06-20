@@ -13,4 +13,10 @@
 
 @synthesize linkedView;
 
+-(void) dealloc
+{
+	[linkedView release];
+	[super dealloc];
+}
+
 @end

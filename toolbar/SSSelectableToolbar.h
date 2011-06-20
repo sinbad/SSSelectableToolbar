@@ -12,8 +12,10 @@
 {
 	NSWindow* window;
 	NSView* blankView;
+	NSInteger defaultItemIndex;
 }
 @property (nonatomic, retain) IBOutlet NSWindow* window;
+@property (nonatomic, assign) NSInteger defaultItemIndex;
 
 -(NSToolbarItem*)itemWithIdentifier:(NSString*)identifier;
 // select the item with the given index, ordered as per the palette and ignoring 
