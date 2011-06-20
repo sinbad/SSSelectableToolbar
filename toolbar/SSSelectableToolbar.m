@@ -86,6 +86,9 @@
 			[window setFrame:winFrame display:YES animate:YES];
 			[window setContentView:view];
 			
+			// change title
+			[window setTitle:[ssitem label]];
+			
 			
 		}
 	}
