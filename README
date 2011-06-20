@@ -35,7 +35,7 @@ needed a selectable toolbar that worked in IB without any plugins.
 How to use
 ----------
 
-1) Add SSSelectableToolbar.h/.m and SSToolbarItem.h/.m to your XCode project
+1) Add all the source files in the 'toolbar' subfolder to your XCode project
 2) In Interface Builder, drag & drop an NSToolbar on to your window
 3) Change the type to 'SSSelectableToolbar'
 4) Connect the 'window' outlet of the toolbar to the parent window
