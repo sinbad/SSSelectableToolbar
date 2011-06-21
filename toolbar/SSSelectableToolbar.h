@@ -21,4 +21,7 @@
 // select the item with the given index, ordered as per the palette and ignoring 
 // all types of buttons except SSSelectableToolbarItem
 -(void)selectItemWithIndex:(NSInteger)idx;
+// Convert a selectable item index (ignoring all except selectable items in palette)
+// to a main index which can be used for other purposes
+-(NSInteger)selectableItemIndexToMainIndex:(NSInteger)idx;
 @end

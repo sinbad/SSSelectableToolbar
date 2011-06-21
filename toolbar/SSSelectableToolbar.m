@@ -129,4 +129,24 @@
 	}
 			
 }
+
+-(NSInteger)selectableItemIndexToMainIndex:(NSInteger)idx
+{
+	NSInteger selIdx = 0;
+	NSInteger mainIdx = 0;
+	for (NSToolbarItem* item in [self items])
+	{
+		if ([item isKindOfClass:[SSSelectableToolbarItem class]])
+		{
+			if (selIdx == idx)
+			{
+				return mainIdx;
+			}
+			++selIdx;
+		}
+		++mainIdx;
+	}
+	
+	return -1;
+}
 @end
