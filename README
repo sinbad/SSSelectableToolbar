@@ -42,13 +42,16 @@ How to use
 5) Drag & drop NSToolbarItem instances on to the toolbar and check the 
    'Selectable' option
 6) Change the type of each one to 'SSSelectableToolbarItem'
-7) Create a Custom View instance for each pane and populate them how you like
+7) Create a Custom View instance at the root of the document (not in the window)
+   for each pane and populate them how you like
 8) Connect the 'linkedView' outlet of each toolbar item to the corresponding 
    pane view
-9) Save, and you're ready to go. Each toolbar item will switch to its 
-   corresponding pane, resizing as necessary. You can make the window resizable
-   if you like, and the user size will be remembered.
-   
+9) Connect the 'nextKeyView' outlet of each custom view to the control that
+   should become the first responder when switching to that tab (Optional)
+
+And you're ready to go. Each toolbar item will switch to its corresponding pane, 
+resizing the window as necessary. You can make the window resizable if you like, 
+and the user size will be remembered when switching back and forth.
    
     
 
