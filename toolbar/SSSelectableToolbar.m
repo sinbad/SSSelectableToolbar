@@ -106,6 +106,11 @@
 			// change title
 			[window setTitle:[ssitem label]];
 			
+			// tab to first control (if nextKeyView connected)
+			NSView* keyView = [view nextKeyView];
+			if (keyView)
+				[window makeFirstResponder:keyView];
+			
 			
 		}
 	}
