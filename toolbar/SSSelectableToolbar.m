@@ -90,10 +90,6 @@
 		{
 			NSView* oldView = [window contentView];
 			NSRect oldFrame = [oldView frame];
-            // AH added to support autolayout. Computes the new size and force autolayout
-            // computation before the window resize animation
-            if([view respondsToSelector:@selector(layoutSubtreeIfNeeded)])
-                [view layoutSubtreeIfNeeded];
 			NSRect newFrame = [view frame];
 			NSRect oldWinFrame = [window frame];
 			NSRect winFrame = oldWinFrame;
